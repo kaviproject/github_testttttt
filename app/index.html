@@ -1,0 +1,119 @@
+<!doctype html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- bower:css -->
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/c3/0.4.5/c3.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <!-- endbuild -->
+    <script src="http://code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.4.2/tabletop.min.js"></script>
+    <script>
+    var public_spreadsheet_url = 'https://docs.google.com/spreadsheets/d/1cMQ_rxzlIjSb6M-U8sqJ8IzUoHOh-ZsPr9_RY9GkDHw/pubhtml';
+    $(document).ready(function() {
+
+        Tabletop.init({
+            key: public_spreadsheet_url,
+            callback: showInfo,
+            debug: true
+        })
+    })
+    window.incentiveData = [];
+    window.zipcodeData = [];
+
+    function showInfo(data, tabletop) {
+
+        $.each(tabletop.models.Sheet1.elements, function(data, idata) {
+            incentiveData.push(idata);
+
+        });
+        $.each(tabletop.models.Sheet2.elements, function(data, zdata) {
+            zipcodeData.push(zdata);
+            //console.log(cat)
+        });
+
+         
+    }
+    </script>
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <div class="header">
+        <div class="color-band"></div>
+    </div>
+    <div class="container" ng-app="eeaDoerApp" ng-init="showInfo(data, tabletop)">
+        <div ng-view=""></div>
+    </div>
+    <div id="footer">
+        <div class="nested-footer">
+            <p><span class="glyphicon glyphicon-copyright-mark"></span> 2014 Commonwealth of Massachussetts.
+                <br> Mass.Gov <span class="glyphicon glyphicon-registration-mark"></span> is a registered service mark of the Commonwealth of Massachusetts</p>
+        </div>
+    </div>
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+    <script>
+    ! function(A, n, g, u, l, a, r) {
+        A.GoogleAnalyticsObject = l, A[l] = A[l] || function() {
+                (A[l].q = A[l].q || []).push(arguments)
+            }, A[l].l = +new Date, a = n.createElement(g),
+            r = n.getElementsByTagName(g)[0], a.src = u, r.parentNode.insertBefore(a, r)
+    }(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-XXXXX-X');
+    ga('send', 'pageview');
+    </script>
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/tabletop/src/tabletop.js"></script>
+    <script src="bower_components/angular-tabletop/TabletopProvider.js"></script>
+    <script src="bower_components/angular-filter/dist/angular-filter.min.js"></script>
+    <script src="bower_components/ng-lodash/build/ng-lodash.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/controllers/glossary.js"></script>
+    <script src="scripts/controllers/faq.js"></script>
+    <script src="scripts/controllers/about.js"></script>
+    <script src="scripts/controllers/contact.js"></script>
+    <script src="scripts/filters/typefilter.js"></script>
+    <script src="scripts/filters/categoryfilter.js"></script>
+    <script src="bower_components/ng-lodash/build/ng-lodash.min.js"></script>
+    <script>
+   /* function runFunction() {
+        document.getElementById('hiding1').style.display = "block";
+        document.getElementById('hiding').style.display = "block";
+        document.getElementById('footer').style.position="relative";
+    }*/
+
+
+    </script>
+    <!-- endbuild -->
+</body>
+
+</html>
